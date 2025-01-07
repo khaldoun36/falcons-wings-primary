@@ -1,0 +1,19 @@
+html,
+body,
+#__nuxt {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 400;
+  color: color-mix(in oklab, var(--color-neutral-600), 20% transparent);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-weight: 750;
+  color: var(--color-neutral-950);
+  line-height: 1.2;
+}

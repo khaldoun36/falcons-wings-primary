@@ -1,0 +1,65 @@
+{
+  "id": "program_overview",
+  "type": "SharedSlice",
+  "name": "ProgramOverview",
+  "description": "ProgramOverview",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": ""
+          }
+        },
+        "image_wide": {
+          "type": "Image",
+          "config": {
+            "label": "Image Wide",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_square": {
+          "type": "Image",
+          "config": {
+            "label": "Image Square",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "program_overview": {
+          "type": "Group",
+          "config": {
+            "label": "Program Overview",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

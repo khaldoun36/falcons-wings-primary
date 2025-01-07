@@ -1,0 +1,54 @@
+{
+  "id": "contact_us_form",
+  "type": "SharedSlice",
+  "name": "ContactUsForm",
+  "description": "ContactUsForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "form_title": {
+          "type": "Text",
+          "config": {
+            "label": "Form Title",
+            "placeholder": ""
+          }
+        },
+        "form_subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Form Subtitle",
+            "placeholder": ""
+          }
+        },
+        "email": {
+          "type": "Text",
+          "config": {
+            "label": "Email",
+            "placeholder": ""
+          }
+        },
+        "phone_number": {
+          "type": "Text",
+          "config": {
+            "label": "Phone Number",
+            "placeholder": ""
+          }
+        },
+        "message_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Message Placeholder",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

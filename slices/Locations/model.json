@@ -1,0 +1,66 @@
+{
+  "id": "locations",
+  "type": "SharedSlice",
+  "name": "Locations",
+  "description": "Locations",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": ""
+          }
+        },
+        "total_schools_in_emirates": {
+          "type": "Group",
+          "config": {
+            "label": "Total Schools In Emirates",
+            "repeat": true,
+            "fields": {
+              "emirate": {
+                "type": "Text",
+                "config": {
+                  "label": "Emirate",
+                  "placeholder": ""
+                }
+              },
+              "number_of_schools": {
+                "type": "Number",
+                "config": {
+                  "label": "Number of Schools",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "schools_logos": {
+          "type": "Group",
+          "config": {
+            "label": "Schools Logos",
+            "repeat": true,
+            "fields": {
+              "logo": {
+                "type": "Image",
+                "config": {
+                  "label": "Logo",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
