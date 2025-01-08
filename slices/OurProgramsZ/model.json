@@ -1,0 +1,83 @@
+{
+  "id": "our_programs_z",
+  "type": "SharedSlice",
+  "name": "OurProgramsZ",
+  "description": "OurProgramsZ",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "is_program_active": {
+          "type": "Boolean",
+          "config": {
+            "label": "Is Program Active",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "program_logo": {
+          "type": "Image",
+          "config": {
+            "label": "Program Logo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "program_title": {
+          "type": "Text",
+          "config": {
+            "label": "Program Title",
+            "placeholder": ""
+          }
+        },
+        "short_description": {
+          "type": "Text",
+          "config": {
+            "label": "Short Description",
+            "placeholder": ""
+          }
+        },
+        "program_details": {
+          "type": "Group",
+          "config": {
+            "label": "Program Details",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,rtl,list-item"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

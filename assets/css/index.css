@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-primary-50: var(--color-emerald-50);
@@ -56,16 +57,24 @@
 /* Utility classes used in the project */
 .img-container {
   position: relative;
+  isolation: isolate;
+  --color-border: var(--color-primary-700);
 }
 
-.img-container::after {
-  content: "";
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1;
-  background-color: var(--color-primary-700);
-  border-radius: inherit;
+.img-container img {
+  border: 1.5px solid color-mix(in oklab, var(--color-black) 10%, transparent);
+}
+
+@media screen and (width >= 768px) {
+  .img-container::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    background: var(--color-border);
+    border-radius: inherit;
+  }
 }

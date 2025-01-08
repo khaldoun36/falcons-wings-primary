@@ -1,6 +1,7 @@
 <template>
   <section
     class="full-width bg-primary-950 grid grid-cols-subgrid py-20 *:col-start-2 *:col-end-2 md:py-24 lg:py-32"
+    id="contact-us"
   >
     <div class="grid gap-16 md:grid-cols-2 lg:gap-20">
       <div class="contact-info max-w-prose">

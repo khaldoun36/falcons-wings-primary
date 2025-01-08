@@ -1,0 +1,55 @@
+{
+  "id": "our_programs",
+  "type": "SharedSlice",
+  "name": "OurPrograms",
+  "description": "OurPrograms",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": ""
+          }
+        },
+        "programs_list": {
+          "type": "Group",
+          "config": {
+            "label": "Programs List",
+            "repeat": true,
+            "fields": {
+              "program": {
+                "type": "Link",
+                "config": {
+                  "label": "Program",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "single_program_details"
+                  ]
+                }
+              },
+              "is_program_active": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Is Program Active",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

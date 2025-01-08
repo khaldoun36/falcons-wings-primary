@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | OurProgramsSlice
   | LocationsSlice
   | FrequentlyAskedQuestionsSlice
   | ContactUsFormSlice
@@ -51,7 +52,74 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+type SingleProgramPageDocumentDataSlicesSlice =
+  | OurProgramsZSlice
+  | ContactUsFormSlice;
+
+/**
+ * Content for Single Program Page documents
+ */
+interface SingleProgramPageDocumentData {
+  /**
+   * Slice Zone field in *Single Program Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_program_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<SingleProgramPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Single Program Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: single_program_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Single Program Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: single_program_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Single Program Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_program_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Single Program Page document from Prismic
+ *
+ * - **API ID**: `single_program_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SingleProgramPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<SingleProgramPageDocumentData>,
+    "single_program_page",
+    Lang
+  >;
+
+export type AllDocumentTypes = PageDocument | SingleProgramPageDocument;
 
 /**
  * Primary content in *ContactUsForm → Default → Primary*
@@ -500,6 +568,212 @@ export type NationalIdentityFrameworkSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *OurPrograms → Default → Primary → Programs List*
+ */
+export interface OurProgramsSliceDefaultPrimaryProgramsListItem {
+  /**
+   * Program field in *OurPrograms → Default → Primary → Programs List*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs.default.primary.programs_list[].program
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  program: prismic.ContentRelationshipField<"single_program_details">;
+
+  /**
+   * Is Program Active field in *OurPrograms → Default → Primary → Programs List*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: our_programs.default.primary.programs_list[].is_program_active
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_program_active: prismic.BooleanField;
+}
+
+/**
+ * Primary content in *OurPrograms → Default → Primary*
+ */
+export interface OurProgramsSliceDefaultPrimary {
+  /**
+   * Section Title field in *OurPrograms → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Programs List field in *OurPrograms → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs.default.primary.programs_list[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  programs_list: prismic.GroupField<
+    Simplify<OurProgramsSliceDefaultPrimaryProgramsListItem>
+  >;
+}
+
+/**
+ * Default variation for OurPrograms Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurProgramsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurProgramsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OurPrograms*
+ */
+type OurProgramsSliceVariation = OurProgramsSliceDefault;
+
+/**
+ * OurPrograms Shared Slice
+ *
+ * - **API ID**: `our_programs`
+ * - **Description**: OurPrograms
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurProgramsSlice = prismic.SharedSlice<
+  "our_programs",
+  OurProgramsSliceVariation
+>;
+
+/**
+ * Item in *OurProgramsZ → Default → Primary → Program Details*
+ */
+export interface OurProgramsZSliceDefaultPrimaryProgramDetailsItem {
+  /**
+   * Image field in *OurProgramsZ → Default → Primary → Program Details*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs_z.default.primary.program_details[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *OurProgramsZ → Default → Primary → Program Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs_z.default.primary.program_details[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *OurProgramsZ → Default → Primary → Program Details*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs_z.default.primary.program_details[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *OurProgramsZ → Default → Primary*
+ */
+export interface OurProgramsZSliceDefaultPrimary {
+  /**
+   * Is Program Active field in *OurProgramsZ → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: our_programs_z.default.primary.is_program_active
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  is_program_active: prismic.BooleanField;
+
+  /**
+   * Program Logo field in *OurProgramsZ → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs_z.default.primary.program_logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  program_logo: prismic.ImageField<never>;
+
+  /**
+   * Program Title field in *OurProgramsZ → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs_z.default.primary.program_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  program_title: prismic.KeyTextField;
+
+  /**
+   * Short Description field in *OurProgramsZ → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs_z.default.primary.short_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  short_description: prismic.KeyTextField;
+
+  /**
+   * Program Details field in *OurProgramsZ → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_programs_z.default.primary.program_details[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  program_details: prismic.GroupField<
+    Simplify<OurProgramsZSliceDefaultPrimaryProgramDetailsItem>
+  >;
+}
+
+/**
+ * Default variation for OurProgramsZ Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurProgramsZSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurProgramsZSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OurProgramsZ*
+ */
+type OurProgramsZSliceVariation = OurProgramsZSliceDefault;
+
+/**
+ * OurProgramsZ Shared Slice
+ *
+ * - **API ID**: `our_programs_z`
+ * - **Description**: OurProgramsZ
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurProgramsZSlice = prismic.SharedSlice<
+  "our_programs_z",
+  OurProgramsZSliceVariation
+>;
+
+/**
  * Item in *ProgramOverview → Default → Primary → Program Overview*
  */
 export interface ProgramOverviewSliceDefaultPrimaryProgramOverviewItem {
@@ -625,6 +899,9 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      SingleProgramPageDocument,
+      SingleProgramPageDocumentData,
+      SingleProgramPageDocumentDataSlicesSlice,
       AllDocumentTypes,
       ContactUsFormSlice,
       ContactUsFormSliceDefaultPrimary,
@@ -650,6 +927,16 @@ declare module "@prismicio/client" {
       NationalIdentityFrameworkSliceDefaultPrimary,
       NationalIdentityFrameworkSliceVariation,
       NationalIdentityFrameworkSliceDefault,
+      OurProgramsSlice,
+      OurProgramsSliceDefaultPrimaryProgramsListItem,
+      OurProgramsSliceDefaultPrimary,
+      OurProgramsSliceVariation,
+      OurProgramsSliceDefault,
+      OurProgramsZSlice,
+      OurProgramsZSliceDefaultPrimaryProgramDetailsItem,
+      OurProgramsZSliceDefaultPrimary,
+      OurProgramsZSliceVariation,
+      OurProgramsZSliceDefault,
       ProgramOverviewSlice,
       ProgramOverviewSliceDefaultPrimaryProgramOverviewItem,
       ProgramOverviewSliceDefaultPrimary,

@@ -1,0 +1,35 @@
+.btn {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--spacing-10);
+  min-width: fit-content;
+  padding: var(--spacing-2_5) var(--spacing-5);
+
+  /* Visual */
+  background-color: var(--color-primary-700);
+  border: 1.5px solid
+    color-mix(in oklab, var(--color-primary-900) 70%, transparent);
+  border-radius: var(--spacing-1_5);
+  color: var(--color-neutral-100);
+
+  /* Interaction */
+  cursor: pointer;
+  transition:
+    background-color 150ms ease-in-out,
+    scale 150ms ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-800);
+}
+
+.btn:active {
+  scale: 0.98;
+}
+
+.btn:focus {
+  outline: 3px solid
+    color-mix(in oklab, var(--color-primary-700) 70%, transparent);
+}

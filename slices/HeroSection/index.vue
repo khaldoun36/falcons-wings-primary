@@ -19,6 +19,12 @@
       <p class="mt-8 text-base text-balance !text-neutral-300/80 md:text-lg">
         {{ slice.primary.section_description }}
       </p>
+      <i18n-link
+        to="/#contact-us"
+        class="btn mx-auto mt-10 max-w-fit !px-12 !py-6"
+      >
+        {{ $getLocale() === "ar" ? "تواصل معنا" : "Contact Us" }}
+      </i18n-link>
     </div>
   </main>
 </template>

@@ -1,8 +1,9 @@
 <template>
   <div class="layout-container">
     <div aria-label="decorative" style="height: 0.25px" />
+    <PrimaryHeader />
     <NuxtPage />
-    <h1>footer</h1>
+    <PrimaryFooter />
   </div>
 </template>
 
@@ -11,6 +12,11 @@
 import "@/assets/css/index.css";
 import "@/assets/css/container.css";
 import "@/assets/css/typography.css";
+import "@/assets/css/button.css";
+
+// Components import
+import PrimaryFooter from "@/components/PrimaryFooter.vue";
+import PrimaryHeader from "@/components/PrimaryHeader.vue";
 </script>
 
 <style></style>

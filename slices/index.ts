@@ -15,6 +15,10 @@ export const components = defineSliceZoneComponents({
   national_identity_framework: defineAsyncComponent(
     () => import("./NationalIdentityFramework/index.vue"),
   ),
+  our_programs: defineAsyncComponent(() => import("./OurPrograms/index.vue")),
+  our_programs_z: defineAsyncComponent(
+    () => import("./OurProgramsZ/index.vue"),
+  ),
   program_overview: defineAsyncComponent(
     () => import("./ProgramOverview/index.vue"),
   ),

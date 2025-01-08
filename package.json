@@ -22,6 +22,7 @@
     "@nuxt/image": "1.8.1",
     "@nuxtjs/prismic": "^3.4.7",
     "@slicemachine/adapter-nuxt": "^0.3.61",
+    "@tailwindcss/typography": "^0.5.16",
     "concurrently": "^9.0.1",
     "eslint": "^8.57.1",
     "nuxt": "^3.13.2",
