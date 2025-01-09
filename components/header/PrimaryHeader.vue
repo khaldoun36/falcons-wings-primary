@@ -31,17 +31,7 @@
           @click="isMenuOpen = !isMenuOpen"
         />
 
-        <button
-          class="btn language-btn"
-          @click="
-            () => $switchLocale($getLocale() === 'en' ? 'ar' : 'en');
-
-            reloadNuxtApp({
-              ttl: 100,
-              path: $getLocale() === 'en' ? '/' : '/ar',
-            });
-          "
-        >
+        <button class="btn language-btn" @click="handleLocaleChange">
           <Icon name="heroicons:language" size="1.5rem" />
         </button>
 
@@ -57,7 +47,7 @@
 import MenuButton from "./MenuButton.vue";
 import enNav from "./enNav.json";
 import arNav from "./arNav.json";
-const { $getLocale } = useI18n();
+const { $getLocale, $switchLocale } = useI18n();
 
 const nav = computed(() => {
   return $getLocale() === "en" ? enNav.enNav : arNav.arNav;
@@ -77,6 +67,14 @@ onUnmounted(() => {
     isMenuBlured.value = window.scrollY > 20;
   });
 });
+
+const handleLocaleChange = () => {
+  $switchLocale($getLocale() === "en" ? "ar" : "en");
+  reloadNuxtApp({
+    ttl: 100,
+    path: currentLocale.value === "en" ? "/" : "/ar",
+  });
+};
 </script>
 
 <style scoped>
