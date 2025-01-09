@@ -2,13 +2,9 @@
   <svg
     viewBox="0 0 3334 2717"
     xmlns="http://www.w3.org/2000/svg"
-    xml:space="preserve"
-    style="
-      fill-rule: evenodd;
-      clip-rule: evenodd;
-      stroke-linejoin: round;
-      stroke-miterlimit: 2;
-    "
+    width="3334"
+    height="2717"
+    class="h-auto max-w-full"
   >
     <g class="fill-neutral-500/40">
       <path
