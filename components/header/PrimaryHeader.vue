@@ -33,7 +33,14 @@
 
         <button
           class="btn language-btn"
-          @click="() => $switchLocale($getLocale() === 'en' ? 'ar' : 'en')"
+          @click="
+            () => $switchLocale($getLocale() === 'en' ? 'ar' : 'en');
+
+            reloadNuxtApp({
+              ttl: 100,
+              path: $getLocale() === 'en' ? '/' : '/ar',
+            });
+          "
         >
           <Icon name="heroicons:language" size="1.5rem" />
         </button>
