@@ -69,11 +69,23 @@ onUnmounted(() => {
 });
 
 const handleLocaleChange = () => {
-  $switchLocale($getLocale() === "en" ? "ar" : "en");
-  reloadNuxtApp({
-    ttl: 100,
-    path: $getLocale() === "en" ? "/" : "/ar",
-  });
+  if ($getLocale() === "en") {
+    reloadNuxtApp({
+      ttl: 100,
+      path: "/ar",
+    });
+    setTimeout(() => {
+      $switchLocale("ar");
+    }, 500);
+  } else if ($getLocale() === "ar") {
+    reloadNuxtApp({
+      ttl: 100,
+      path: "/",
+    });
+    setTimeout(() => {
+      $switchLocale("en");
+    }, 500);
+  }
 };
 </script>
 
