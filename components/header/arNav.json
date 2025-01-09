@@ -1,0 +1,24 @@
+{
+  "arNav": [
+    {
+      "title": "الرئيسية",
+      "href": "/"
+    },
+    {
+      "title": "برامجنا",
+      "href": "/#our-programs"
+    },
+    {
+      "title": "شركاؤنا",
+      "href": "/#locations"
+    },
+    {
+      "title": "نظرة على البرنامج",
+      "href": "/#program-overview"
+    },
+    {
+      "title": "الأسئلة الشائعة",
+      "href": "/#frequently-asked-questions"
+    }
+  ]
+}

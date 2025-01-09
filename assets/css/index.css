@@ -65,6 +65,10 @@
   border: 1.5px solid color-mix(in oklab, var(--color-black) 10%, transparent);
 }
 
+body:has(.primary-nav.active) {
+  overflow: hidden;
+}
+
 @media screen and (width >= 768px) {
   .img-container::after {
     content: "";

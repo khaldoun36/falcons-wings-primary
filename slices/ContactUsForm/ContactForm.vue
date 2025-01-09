@@ -78,17 +78,23 @@
         rows="4"
         class="focus:ring-primary-700/60 rounded-md border-[1.5px] border-white/10 bg-neutral-600/40 p-2 text-neutral-100 focus:ring-2 focus:outline-none"
         v-model="form.message"
+        :placeholder="message"
       />
       <span v-if="errors.message" class="text-sm text-red-500">{{
         errors.message
       }}</span>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    <button type="submit" class="btn btn-primary mt-2">
+      {{ $getLocale() === "ar" ? "إرسال" : "Submit" }}
+    </button>
   </form>
 </template>
 
 <script setup lang="ts">
+const { message } = defineProps<{
+  message: string;
+}>();
 const { $getLocale } = useI18n();
 import { z } from "zod";
 

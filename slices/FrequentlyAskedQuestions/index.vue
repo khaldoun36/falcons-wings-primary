@@ -1,6 +1,7 @@
 <template>
   <section
     class="full-width bg-primary-700/20 grid grid-cols-subgrid py-10 md:py-12 lg:py-16"
+    id="frequently-asked-questions"
   >
     <div class="col-start-2 col-end-2 grid gap-16 md:grid-cols-2 lg:gap-20">
       <div class="img-container hidden rounded-md shadow md:block">

@@ -1,0 +1,24 @@
+{
+  "enNav": [
+    {
+      "title": "Home",
+      "href": "/"
+    },
+    {
+      "title": "Our Programs",
+      "href": "/#our-programs"
+    },
+    {
+      "title": "Partners",
+      "href": "/#locations"
+    },
+    {
+      "title": "Program Overview",
+      "href": "/#program-overview"
+    },
+    {
+      "title": "FAQ",
+      "href": "/#frequently-asked-questions"
+    }
+  ]
+}

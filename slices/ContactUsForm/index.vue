@@ -46,13 +46,14 @@
               <a
                 :href="`tel:${slice.primary.phone_number?.replace(/\s+/g, '') || '+971585567875'}`"
                 class="text-base !text-neutral-300/80"
+                style="direction: ltr !important"
                 >{{ slice.primary.phone_number || "+971 58 556 7875" }}</a
               >
             </div>
           </div>
         </div>
       </div>
-      <ContactForm />
+      <ContactForm :message="slice.primary.message_placeholder" />
     </div>
   </section>
 </template>

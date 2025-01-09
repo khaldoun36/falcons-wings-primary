@@ -3,7 +3,11 @@
     <Icon
       :name="icon"
       size="192px"
-      class="absolute -top-2 -right-2 mb-2 text-neutral-400/10"
+      class="absolute -top-2 mb-2 text-neutral-400/10"
+      :class="{
+        '!-left-2 scale-x-[-1]': $getLocale() === 'ar',
+        '!-right-2': $getLocale() === 'en',
+      }"
     />
 
     <h3

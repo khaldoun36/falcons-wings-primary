@@ -1,6 +1,7 @@
 <template>
   <section
     class="full-width grid grid-cols-subgrid bg-[hsl(46_74%_92%_/_.4)] py-20 md:py-24 lg:py-32"
+    id="our-programs"
   >
     <div class="col-start-2 col-end-2">
       <h2
@@ -72,14 +73,29 @@ const { slice } = defineProps(
   ]),
 );
 
+const { $getLocale } = useI18n();
+
+const locale = computed(() => {
+  if ($getLocale() === "en") {
+    return "en-US";
+  }
+  return "ar-AE";
+});
+
 const { client } = usePrismic();
-const { data: posts } = await useAsyncData("posts", () =>
-  client.getAllByType("single_program_page", {
-    orderings: {
-      field: "document.first_publication_date",
-      direction: "asc",
-    },
-  }),
+const { data: posts } = await useAsyncData(
+  "posts",
+  () =>
+    client.getAllByType("single_program_page", {
+      orderings: {
+        field: "document.first_publication_date",
+        direction: "asc",
+      },
+      lang: locale.value,
+    }),
+  {
+    watch: [computed(() => locale.value)],
+  },
 );
 </script>
 

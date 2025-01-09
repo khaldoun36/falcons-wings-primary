@@ -1,14 +1,19 @@
+/* Base button styles */
 .btn {
   /* Layout */
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--spacing-10);
+  height: var(--spacing-12);
   min-width: fit-content;
-  padding: var(--spacing-2_5) var(--spacing-5);
+  padding: var(--spacing-4) var(--spacing-8);
 
   /* Visual */
-  background-color: var(--color-primary-700);
+  background: linear-gradient(
+    to bottom,
+    var(--color-primary-700),
+    var(--color-primary-900)
+  );
   border: 1.5px solid
     color-mix(in oklab, var(--color-primary-900) 70%, transparent);
   border-radius: var(--spacing-1_5);
@@ -17,19 +22,51 @@
   /* Interaction */
   cursor: pointer;
   transition:
-    background-color 150ms ease-in-out,
+    background 150ms ease-in-out,
     scale 150ms ease-in-out;
 }
 
-.btn:hover {
-  background-color: var(--color-primary-800);
+/* Button states */
+@media screen and (hover: hover) {
+  .btn:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary-800),
+      var(--color-primary-900)
+    );
+  }
 }
-
 .btn:active {
   scale: 0.98;
 }
 
 .btn:focus {
-  outline: 3px solid
+  outline: 1.5px solid
     color-mix(in oklab, var(--color-primary-700) 70%, transparent);
+}
+
+/* Language specific styles */
+.btn:lang(en) {
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Language button variant */
+.btn.language-btn {
+  aspect-ratio: 1;
+  background: var(--color-neutral-300);
+  border: none;
+  color: var(--color-neutral-950);
+  padding: 1rem;
+  width: auto;
+}
+
+@media screen and (hover: hover) {
+  .btn.language-btn:hover {
+    background: var(--color-neutral-400);
+  }
+}
+
+.btn.language-btn:focus {
+  outline: 1.5px solid
+    color-mix(in oklab, var(--color-neutral-100) 70%, transparent);
 }

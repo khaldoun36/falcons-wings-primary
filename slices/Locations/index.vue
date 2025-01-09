@@ -1,9 +1,16 @@
 <template>
   <section
     class="full-width grid py-20 md:grid-cols-2 md:gap-16 md:py-24 lg:gap-20 lg:py-32"
+    id="locations"
+    style="direction: ltr !important"
   >
     <div
       class="px-4 md:px-8 lg:pl-[calc((100vw-960px)/2)] xl:pl-[calc((100vw-1216px)/2)] 2xl:pl-[calc((100vw-1472px)/2)]"
+      :style="
+        $getLocale() === 'ar'
+          ? 'direction: rtl !important'
+          : 'direction: ltr !important'
+      "
     >
       <h2
         class="text-center text-2xl text-balance md:text-start md:text-3xl lg:text-5xl"

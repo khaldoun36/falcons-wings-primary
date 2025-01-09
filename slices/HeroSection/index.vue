@@ -16,7 +16,9 @@
       >
         {{ slice.primary.section_title }}
       </h1>
-      <p class="mt-8 text-base text-balance !text-neutral-300/80 md:text-lg">
+      <p
+        class="mx-auto mt-8 max-w-prose text-base text-balance !text-neutral-300/80 md:text-lg"
+      >
         {{ slice.primary.section_description }}
       </p>
       <i18n-link
