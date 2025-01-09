@@ -72,7 +72,7 @@ const handleLocaleChange = () => {
   $switchLocale($getLocale() === "en" ? "ar" : "en");
   reloadNuxtApp({
     ttl: 100,
-    path: currentLocale.value === "en" ? "/" : "/ar",
+    path: $getLocale() === "en" ? "/" : "/ar",
   });
 };
 </script>
