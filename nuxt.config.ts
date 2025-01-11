@@ -74,4 +74,8 @@ export default defineNuxtConfig({
     strategy: "prefix_except_default",
     meta: true,
   },
+
+  image: {
+    prismic: {},
+  },
 });
