@@ -155,6 +155,7 @@ type ApiResponse = {
   status: number;
 };
 
+// url https://script.google.com/macros/s/AKfycbytfXxo8N3gOg5JUJADKOX5rS9FwXppCSF68l-tCCbES08rp7pHEeKY2LrknEuD7HVHJA/exec
 const submitForm = async () => {
   try {
     // Reset errors
@@ -164,13 +165,21 @@ const submitForm = async () => {
     const validatedData = formSchema.parse(form.value);
 
     status.value = "loading";
-    const response = await $fetch<ApiResponse>(
-      "https://api.web3forms.com/submit",
-      {
+    const [web3Response, googleResponse] = await Promise.all([
+      $fetch<ApiResponse>("https://api.web3forms.com/submit", {
         method: "POST",
         body: validatedData,
-      },
-    );
+      }),
+      $fetch<ApiResponse>(
+        "https://script.google.com/macros/s/AKfycbytfXxo8N3gOg5JUJADKOX5rS9FwXppCSF68l-tCCbES08rp7pHEeKY2LrknEuD7HVHJA/exec",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `Name=${form.value.name}&Email=${form.value.email}&Phone=${form.value.phone}&Organization=${form.value.school}&Message=${form.value.message}`,
+        },
+      ),
+    ]);
+    const response = web3Response; // Keep original response for existing logic
 
     if (response.message) {
       status.value = "success";
