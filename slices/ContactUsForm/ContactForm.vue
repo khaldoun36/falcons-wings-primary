@@ -136,7 +136,8 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const form = ref<FormData>({
-  access_key: useRuntimeConfig().formAccessKey,
+  // access_key: "aec20e4c-f688-4136-bd0b-6395c10d079b",
+  access_key: import.meta.env.VITE_FORM_ACCESS_KEY,
   subject: "New Submission from Falcon's Wings",
   name: "",
   email: "",
@@ -171,10 +172,8 @@ const submitForm = async () => {
       },
     );
 
-    result.value = response.message;
-    if (response.status === 200) {
+    if (response.message) {
       status.value = "success";
-      // Reset form after successful submission
       form.value.name = "";
       form.value.email = "";
       form.value.phone = "";

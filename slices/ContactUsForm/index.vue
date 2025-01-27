@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-      <ContactForm :message="slice.primary.message_placeholder" />
+      <ContactForm :message="slice.primary.message_placeholder || ''" />
     </div>
   </section>
 </template>

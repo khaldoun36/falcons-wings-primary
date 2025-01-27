@@ -7,6 +7,7 @@
         :alt="slice.primary.hero_image.alt!"
         :width="slice.primary.hero_image.dimensions?.width"
         :height="slice.primary.hero_image.dimensions?.height"
+        sizes="100vw"
       />
     </div>
     <div class="hero-content mx-auto">

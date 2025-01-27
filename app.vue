@@ -26,4 +26,9 @@ const head = useLocaleHead({
 });
 </script>
 
-<style></style>
+<style>
+html,
+#__nuxt {
+  scroll-behavior: smooth;
+}
+</style>
