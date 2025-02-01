@@ -3,11 +3,12 @@
     <div class="hero-visual">
       <NuxtImg
         v-if="slice.primary.hero_image?.url"
+        preload
         :src="slice.primary.hero_image.url"
         :alt="slice.primary.hero_image.alt!"
         :width="slice.primary.hero_image.dimensions?.width"
         :height="slice.primary.hero_image.dimensions?.height"
-        sizes="100vw"
+        sizes="100vw sm:100vw md:100vw"
       />
     </div>
     <div class="hero-content mx-auto">
@@ -77,8 +78,8 @@ defineProps(
 
 .hero-visual img {
   object-fit: cover;
-  min-height: 100%;
-  min-width: 100%;
+  height: 100%;
+  width: 100%;
   mix-blend-mode: overlay;
 }
 
