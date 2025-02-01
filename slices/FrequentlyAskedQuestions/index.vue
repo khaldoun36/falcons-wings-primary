@@ -17,7 +17,7 @@
 
       <div class="md:mt-3">
         <h2
-          class="text-xl text-balance md:text-start md:text-3xl"
+          class="text-center text-2xl text-balance md:text-start md:text-3xl lg:text-5xl"
           :class="{ 'tracking-wide': $getLocale() === 'en' }"
         >
           {{ slice.primary.section_title }}
@@ -40,17 +40,17 @@
             >
               <AccordionHeader class="flex">
                 <AccordionTrigger
-                  class="group flex flex-1 cursor-default items-center justify-between p-5 leading-none outline-none"
+                  class="group flex flex-1 cursor-default items-start justify-between gap-2 p-5 leading-none outline-none"
                 >
                   <h3
-                    class="relative text-lg md:text-xl"
+                    class="relative text-lg md:text-start md:text-xl"
                     :class="{ 'tracking-wide': $getLocale() === 'en' }"
                   >
                     {{ item.question }}
                   </h3>
                   <Icon
                     name="radix-icons:chevron-down"
-                    class="text-green10 transition-transform duration-[250ms] ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180"
+                    class="text-green-10 transition-transform duration-[250ms] ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180"
                     aria-label="Expand/Collapse"
                   />
                 </AccordionTrigger>
