@@ -17,7 +17,7 @@
 
       <div class="md:mt-3">
         <h2
-          class="text-center text-2xl text-balance md:text-start md:text-3xl lg:text-5xl"
+          class="text-xl text-balance md:text-start md:text-3xl"
           :class="{ 'tracking-wide': $getLocale() === 'en' }"
         >
           {{ slice.primary.section_title }}
@@ -43,7 +43,7 @@
                   class="group flex flex-1 cursor-default items-center justify-between p-5 leading-none outline-none"
                 >
                   <h3
-                    class="relative text-xl md:text-2xl"
+                    class="relative text-lg md:text-xl"
                     :class="{ 'tracking-wide': $getLocale() === 'en' }"
                   >
                     {{ item.question }}
