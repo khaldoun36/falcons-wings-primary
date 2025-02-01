@@ -7,23 +7,28 @@
     <header
       class="primary-header isolate flex items-center justify-between py-4"
     >
-      <i18n-link to="/" class="logo">Logo</i18n-link>
+      <i18n-link to="/">
+        <Logo />
+      </i18n-link>
       <nav
         class="primary-nav flex items-center gap-10"
         :class="{ active: isMenuOpen }"
       >
         <i18n-link
           v-for="link in nav"
+          :key="link.href"
           :to="link.href"
           class="text-base text-neutral-100"
           :class="{ 'tracking-wide': $getLocale() === 'en' }"
-          >{{ link.title }}</i18n-link
         >
+          {{ link.title }}
+        </i18n-link>
         <i18n-link
           to="/#contact-us"
           class="btn mx-auto mt-10 !flex !px-12 !py-6 sm:!hidden"
-          >Contact Us</i18n-link
         >
+          Contact Us
+        </i18n-link>
       </nav>
       <div class="cta-container flex items-center gap-4">
         <MenuButton
@@ -45,6 +50,7 @@
 
 <script setup>
 import MenuButton from "./MenuButton.vue";
+import Logo from "../Logo.vue";
 import enNav from "./enNav.json";
 import arNav from "./arNav.json";
 const { $getLocale, $switchLocale } = useI18n();

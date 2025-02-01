@@ -5,7 +5,7 @@
     <footer
       class="col-start-2 col-end-2 flex flex-col items-start justify-between gap-12 md:flex-row md:items-center"
     >
-      <div class="bg-primary-700/20 size-10 rounded-full"></div>
+      <Logo />
       <p class="text-center text-sm text-neutral-300/80">
         &copy; {{ new Date().getFullYear() }}
         {{
@@ -18,6 +18,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Logo from "./Logo.vue";
+</script>
 
 <style scoped></style>
