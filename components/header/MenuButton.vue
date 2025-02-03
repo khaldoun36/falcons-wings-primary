@@ -1,6 +1,11 @@
 <template>
-  <div class="menu-icon" aria-label="menu trigger button">
-    <input class="menu-icon__cheeckbox" type="checkbox" />
+  <div class="menu-icon">
+    <label for="menu-icon__cheeckbox" class="sr-only">Mobile menu button</label>
+    <input
+      class="menu-icon__cheeckbox"
+      type="checkbox"
+      id="menu-icon__cheeckbox"
+    />
     <div>
       <span></span>
       <span></span>
