@@ -332,6 +332,16 @@ export interface HeroSectionSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   section_description: prismic.KeyTextField;
+
+  /**
+   * Section Title field in *HeroSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_section.default.primary.main_section_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  main_section_title: prismic.RichTextField;
 }
 
 /**

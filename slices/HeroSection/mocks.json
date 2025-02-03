@@ -35,6 +35,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "bread",
 				"type": "Text"
+			},
+			"main_section_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Orange"
+						}
+					}
+				]
 			}
 		},
 		"items": []

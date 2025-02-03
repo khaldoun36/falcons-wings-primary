@@ -33,6 +33,15 @@
             "label": "Section Description",
             "placeholder": ""
           }
+        },
+        "main_section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,rtl"
+          }
         }
       },
       "items": {}
