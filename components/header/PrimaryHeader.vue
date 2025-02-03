@@ -7,7 +7,7 @@
     <header
       class="primary-header isolate flex items-center justify-between py-4"
     >
-      <i18n-link to="/">
+      <i18n-link to="/" aria-label="home">
         <Logo />
       </i18n-link>
       <nav
@@ -36,7 +36,11 @@
           @click="isMenuOpen = !isMenuOpen"
         />
 
-        <button class="btn language-btn" @click="handleLocaleChange">
+        <button
+          class="btn language-btn"
+          @click="handleLocaleChange"
+          aria-label="language selector"
+        >
           <Icon name="heroicons:language" size="1.5rem" />
         </button>
 

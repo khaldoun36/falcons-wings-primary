@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-icon">
+  <div class="menu-icon" aria-label="menu trigger button">
     <input class="menu-icon__cheeckbox" type="checkbox" />
     <div>
       <span></span>

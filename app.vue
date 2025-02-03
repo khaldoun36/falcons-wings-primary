@@ -1,7 +1,7 @@
 <template>
   <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
     <div class="layout-container">
-      <div aria-label="decorative" style="height: 0.2px" />
+      <div aria-hidden="true" style="height: 0.2px" />
       <PrimaryHeader />
       <NuxtPage />
       <PrimaryFooter />
