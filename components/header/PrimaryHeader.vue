@@ -116,7 +116,7 @@ const handleLocaleChange = () => {
 }
 
 .header-container.active::after {
-  background: color-mix(in oklab, var(--color-primary-950) 70%, transparent);
+  background: color-mix(in oklab, var(--color-primary-950) 90%, transparent);
   backdrop-filter: blur(10px);
 }
 
@@ -127,6 +127,11 @@ const handleLocaleChange = () => {
 }
 
 @media screen and (width <= 45rem) {
+  .header-container::after {
+    background: color-mix(in oklab, var(--color-primary-950) 90%, transparent);
+    backdrop-filter: blur(10px);
+  }
+
   .primary-nav {
     position: fixed;
     flex-direction: column;
@@ -134,7 +139,7 @@ const handleLocaleChange = () => {
     align-items: start;
     inset: 0;
     min-height: 100dvh;
-    background: color-mix(in oklab, var(--color-primary-950) 70%, transparent);
+    background: color-mix(in oklab, var(--color-primary-950) 90%, transparent);
     backdrop-filter: blur(10px);
     z-index: 100;
     padding-inline-start: var(--spacing-4);
