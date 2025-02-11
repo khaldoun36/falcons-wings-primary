@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="h-[3.5rem] max-w-min fill-gray-50 md:h-[4.25rem]"
+    class="h-[3.5rem] w-auto max-w-min fill-gray-50 md:h-[4.25rem]"
     width="100%"
     height="100%"
     viewBox="0 0 6288 5067"
