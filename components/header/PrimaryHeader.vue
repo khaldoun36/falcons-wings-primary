@@ -1,9 +1,13 @@
 <template>
+  <div ref="headerTracker" class="h-[0.25px] w-full bg-transparent" />
   <div
     class="full-width layout-container header-container fixed top-0 right-0 left-0 isolate z-50 !min-h-auto"
-    :class="{ active: isMenuBlured || useRoute().path !== '/' }"
+    :class="{
+      active:
+        isMenuBlured ||
+        (useRoute().name !== 'index' && useRoute().name !== 'localized-index'),
+    }"
   >
-    <div ref="headerTracker" class="h-[1px] w-full bg-transparent" />
     <header
       class="primary-header isolate flex items-center justify-between py-4"
     >
@@ -65,17 +69,24 @@ const nav = computed(() => {
 
 const isMenuOpen = ref(false);
 const isMenuBlured = ref(false);
-const headerTracker = ref("");
-onMounted(() => {
-  window.addEventListener("scroll", () => {
-    isMenuBlured.value = window.scrollY > 20;
-  });
-});
 
-onUnmounted(() => {
-  window.removeEventListener("scroll", () => {
-    isMenuBlured.value = window.scrollY > 20;
+const headerTracker = ref("");
+
+// const isActive = computed(() => {
+//   return (
+//     isMenuBlured || (route.name !== "index" && route.name !== "localized-index")
+//   );
+// });
+
+onMounted(() => {
+  // intersection observer logic
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      isMenuBlured.value = !entry.isIntersecting;
+    });
   });
+
+  observer.observe(headerTracker.value);
 });
 
 const handleLocaleChange = () => {
