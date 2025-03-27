@@ -53,7 +53,7 @@ defineProps(
 .hero-section {
   position: relative;
   isolation: isolate;
-  height: calc(100dvh - 2.5rem);
+  height: 100dvh;
   display: grid;
   place-items: center;
   grid-template-columns: subgrid;

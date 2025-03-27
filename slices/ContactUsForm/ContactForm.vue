@@ -136,8 +136,8 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const form = ref<FormData>({
-  // access_key: "aec20e4c-f688-4136-bd0b-6395c10d079b",
-  access_key: import.meta.env.VITE_FORM_ACCESS_KEY,
+  access_key: "1f62dcaf-597d-4198-9dd6-b7283948ca0a",
+  // access_key: import.meta.env.VITE_FORM_ACCESS_KEY,
   subject: "New Submission from Falcon's Wings",
   name: "",
   email: "",
@@ -155,7 +155,7 @@ type ApiResponse = {
   status: number;
 };
 
-// url https://script.google.com/macros/s/AKfycbytfXxo8N3gOg5JUJADKOX5rS9FwXppCSF68l-tCCbES08rp7pHEeKY2LrknEuD7HVHJA/exec
+// Submit just to web3forms and skip Google Script
 const submitForm = async () => {
   try {
     // Reset errors
@@ -165,24 +165,47 @@ const submitForm = async () => {
     const validatedData = formSchema.parse(form.value);
 
     status.value = "loading";
-    const [web3Response, googleResponse] = await Promise.all([
-      $fetch<ApiResponse>("https://api.web3forms.com/submit", {
+
+    // Only use web3forms for submission since Google Script is giving 403 errors
+    const response = await $fetch<ApiResponse>(
+      "https://api.web3forms.com/submit",
+      {
         method: "POST",
         body: validatedData,
-      }),
-      $fetch<ApiResponse>(
+      },
+    );
+
+    // Try sending to Google Script separately as a background task
+    // This won't block the main form submission
+    try {
+      const formData = new FormData();
+      formData.append("Name", form.value.name);
+      formData.append("Email", form.value.email);
+      formData.append("Phone", form.value.phone || "");
+      formData.append("Organization", form.value.school);
+      formData.append("Message", form.value.message);
+
+      fetch(
         "https://script.google.com/macros/s/AKfycbytfXxo8N3gOg5JUJADKOX5rS9FwXppCSF68l-tCCbES08rp7pHEeKY2LrknEuD7HVHJA/exec",
         {
           method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `Name=${form.value.name}&Email=${form.value.email}&Phone=${form.value.phone}&Organization=${form.value.school}&Message=${form.value.message}`,
+          mode: "no-cors",
+          body: formData,
         },
-      ),
-    ]);
-    const response = web3Response; // Keep original response for existing logic
+      ).catch((error) => {
+        // Silently fail - we don't want Google script errors to affect the user experience
+        console.log(
+          "Google form backup submission failed, continuing with main form",
+        );
+      });
+    } catch (e) {
+      // Ignore Google script errors completely
+      console.log("Google form submission attempt failed");
+    }
 
     if (response.message) {
       status.value = "success";
+      // Reset form on success
       form.value.name = "";
       form.value.email = "";
       form.value.phone = "";

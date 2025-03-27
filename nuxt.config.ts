@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // The private keys which are only available within server-side
     formAccessKey:
-      process.env.FORM_ACCESS_KEY || "aec20e4c-f688-4136-bd0b-6395c10d079b",
+      process.env.FORM_ACCESS_KEY || "1f62dcaf-597d-4198-9dd6-b7283948ca0a",
   },
 
   vite: {
