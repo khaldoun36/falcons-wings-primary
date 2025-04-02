@@ -1,6 +1,6 @@
 <template>
   <main class="full-width hero-section" id="hero-section">
-    <div class="hero-visual">
+    <div ref="heroVisual" class="hero-visual">
       <video
         ref="heroVideo"
         muted
@@ -60,6 +60,7 @@ onMounted(() => {
 
     heroVideo.value.addEventListener("canplaythrough", () => {
       heroVideo.value?.play();
+      heroVisual.value?.classList.add("loaded"); // Remove blur effect
     });
   }
 });
@@ -84,12 +85,14 @@ onMounted(() => {
 .hero-visual {
   position: absolute;
   inset: 0;
-  overflow: hidden; /* Changed from clip to hidden to contain the video */
-  background-size: cover; /* Ensure the blurred image covers the area */
+  overflow: hidden;
+  background-size: cover;
   background-position: center;
-  transition:
-    background-image 0.3s ease-in-out,
-    filter 0.3s ease-in-out; /* Optional smooth transition */
+  backdrop-filter: blur(20px);
+  transition: backdrop-filter 0.5s ease-in-out;
+}
+.hero-visual.loaded {
+  backdrop-filter: blur(0);
 }
 
 .hero-video__element {
