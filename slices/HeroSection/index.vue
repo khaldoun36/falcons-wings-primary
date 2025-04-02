@@ -1,15 +1,17 @@
 <template>
   <main class="full-width hero-section" id="hero-section">
     <div class="hero-visual">
-      <NuxtImg
-        v-if="slice.primary.hero_image?.url"
-        preload
-        :src="slice.primary.hero_image.url"
-        :alt="slice.primary.hero_image.alt!"
-        :width="slice.primary.hero_image.dimensions?.width"
-        :height="slice.primary.hero_image.dimensions?.height"
-        sizes="100vw sm:100vw md:100vw"
-      />
+      <video
+        ref="heroVideo"
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        class="hero-video__element"
+      >
+        <source :src="heroVideoSrc" type="video/mp4" />
+      </video>
+      <div class="video-overlay"></div>
     </div>
     <div class="hero-content mx-auto">
       <h1
@@ -32,9 +34,9 @@
     </div>
   </main>
 </template>
-
 <script setup lang="ts">
 import { type Content } from "@prismicio/client";
+import heroVideoSrc from "@/assets/hero-section-video.mp4";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
@@ -46,6 +48,21 @@ defineProps(
     "context",
   ]),
 );
+
+const heroVideo = ref<HTMLVideoElement | null>(null);
+const heroVisual = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  if (heroVideo.value) {
+    heroVideo.value.play().catch((error) => {
+      console.warn("Autoplay prevented:", error);
+    });
+
+    heroVideo.value.addEventListener("canplaythrough", () => {
+      heroVideo.value?.play();
+    });
+  }
+});
 </script>
 
 <style scoped>
@@ -67,25 +84,34 @@ defineProps(
 .hero-visual {
   position: absolute;
   inset: 0;
-  overflow: clip;
-  background: linear-gradient(
-    to bottom,
-    var(--color-neutral-500),
-    var(--color-neutral-600),
-    var(--color-neutral-900)
-  );
+  overflow: hidden; /* Changed from clip to hidden to contain the video */
+  background-size: cover; /* Ensure the blurred image covers the area */
+  background-position: center;
+  transition:
+    background-image 0.3s ease-in-out,
+    filter 0.3s ease-in-out; /* Optional smooth transition */
 }
 
-.hero-visual img {
+.hero-video__element {
   object-fit: cover;
   height: 100%;
   width: 100%;
-  mix-blend-mode: overlay;
+}
+
+/* Style for the overlay */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Black with 20% opacity */
+  z-index: 1; /* Ensure it's on top of the video */
 }
 
 /* Content */
 .hero-content {
   text-align: center;
-  z-index: 1;
+  z-index: 1; /* Keep content above the overlay */
 }
 </style>
