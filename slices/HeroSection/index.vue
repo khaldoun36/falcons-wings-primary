@@ -83,6 +83,7 @@ onMounted(() => {
 
 /* Visual Elements */
 .hero-visual {
+  background-color: var(--color-neutral-950);
   position: absolute;
   inset: 0;
   overflow: hidden;
