@@ -1,4 +1,5 @@
 <template>
+  <Title> {{ page?.data.slices[0]?.primary.program_title }} </Title>
   <SliceZone :slices="page?.data.slices ?? []" :components="components" />
 </template>
 

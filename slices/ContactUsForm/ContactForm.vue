@@ -125,14 +125,16 @@ const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z
     .string()
-    .regex(/^\+?[1-9]\d{1,14}$/, "Invalid phone number")
+    .regex(
+      /^(00971\d{9}|0\d{9}|\+971\d{9})$/, // Updated regex to include +971
+      "Invalid phone number format. Accepted formats are 00971XXXXXXXXX, 0XXXXXXXXX, or +971XXXXXXXXX.",
+    )
     .optional(),
   school: z
     .string()
     .min(2, "School/Organization must be at least 2 characters"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
-
 type FormData = z.infer<typeof formSchema>;
 
 const form = ref<FormData>({
