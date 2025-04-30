@@ -126,10 +126,10 @@ const formSchema = z.object({
   phone: z
     .string()
     .regex(
-      /^(00971\d{9}|0\d{9}|\+971\d{9})$/, // Updated regex to include +971
-      "Invalid phone number format. Accepted formats are 00971XXXXXXXXX, 0XXXXXXXXX, or +971XXXXXXXXX.",
+      /^(|00971\d{9}|0\d{9}|\+971\d{9})$/, // Allow empty string OR the formats
+      "Invalid phone number format. Leave empty or use 00971..., 0..., or +971...",
     )
-    .optional(),
+    .optional(), // Still useful if the key could truly be absent
   school: z
     .string()
     .min(2, "School/Organization must be at least 2 characters"),
