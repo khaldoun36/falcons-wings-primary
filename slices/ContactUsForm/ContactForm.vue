@@ -120,11 +120,18 @@
           />
         </svg>
         <p class="text-lg">
-          Thank you for contacting us, the team will be in contact with you
-          soon.
+          {{
+            $getLocale() === "ar"
+              ? "إغلاق"
+              : "Thank you for contacting us, the team will be in contact with you soon."
+          }}
         </p>
         <button @click="closeModal" class="btn btn-secondary mt-4 px-4 py-2">
-          Close
+          {{
+            $getLocale() === "ar"
+              ? "شُكراً لتواصلكم مَعَنا، الفريق بيتواصل وياكم قريباً."
+              : "Close"
+          }}
         </button>
       </div>
     </dialog>
